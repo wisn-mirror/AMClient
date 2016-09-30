@@ -60,6 +60,8 @@
 
     <!-- 更改设置 -->
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:allowBackup="true"
@@ -69,7 +71,7 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="ab8aeddfb036ce1fe61fef2dbad0a509"></meta-data>
+            android:value="ab8aeddfb036ce1fe61fef2dbad0a509" />
 
         <activity android:name=".activity.MainActivity">
             <intent-filter>
@@ -98,6 +100,7 @@
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
                 <action android:name="android.intent.action.PACKAGE_REPLACED" />
                 <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
@@ -116,7 +119,11 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".activity.BlurActivity"></activity>
+        <activity android:name=".activity.BlurActivity" />
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login" />
+        <activity android:name=".activity.LoginActivity"></activity>
     </application>
 
 </manifest>
