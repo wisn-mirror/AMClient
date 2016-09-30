@@ -14,7 +14,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.wisn.pm.ApkInfo;
+import com.wisn.pm.bean.ApkInfo;
 import com.wisn.pm.R;
 
 import java.util.ArrayList;

@@ -100,7 +100,6 @@
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
                 <action android:name="android.intent.action.PACKAGE_REPLACED" />
                 <action android:name="android.intent.action.PACKAGE_REMOVED" />
-
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
@@ -120,10 +119,11 @@
         </receiver>
 
         <activity android:name=".activity.BlurActivity" />
-        <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login" />
-        <activity android:name=".activity.LoginActivity"></activity>
+        <!--登陆Activity-->
+        <activity android:name=".activity.LoginActivity" />
+        <!--设置Pin-->
+        <activity android:name=".activity.SetPinActivity" />
+
     </application>
 
 </manifest>

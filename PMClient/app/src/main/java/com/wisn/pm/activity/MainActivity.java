@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         getTemperature.setText(getSensor());
 
         initLocation();
-        startActivity(new Intent(this,BlurActivity.class));
+        startActivity(new Intent(this, BlurActivity.class));
     }
 
     /**
@@ -210,10 +210,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             location.setOnClickListener(null);
         } else if (view == location_ring) {
             //设置位置监听
-          ToastUtils.show(MainActivity.this,"未实现");
+            ToastUtils.show(MainActivity.this, "未实现");
         } else if (view == getlog) {
             //获取日志，开始断点续传
-            ToastUtils.show(MainActivity.this,"未实现");
+            ToastUtils.show(MainActivity.this, "未实现");
         } else if (view == getTemperature) {
             //获取温度
             /*获取系统服务（SENSOR_SERVICE）返回一个SensorManager对象*/
@@ -238,7 +238,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 getTemperature.setOnClickListener(this);
             }
 
-        }else  if(view==finish){
+        } else if (view == finish) {
             this.finish();
         }
     }
@@ -297,14 +297,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // 设置定位监听
         locationClient.setLocationListener(locationListener);
     }
+
     /**
      * 开始定位
      *
-     * @since 2.8.0
      * @author hongming.wang
-     *
+     * @since 2.8.0
      */
-    private void startLocation(){
+    private void startLocation() {
         //根据控件的选择，重新设置定位参数
         resetOption();
         // 设置定位参数
@@ -331,17 +331,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // 设置网络请求超时时间
         locationOption.setHttpTimeOut(Long.valueOf(30000));
     }
+
     /**
      * 停止定位
      *
-     * @since 2.8.0
      * @author hongming.wang
-     *
+     * @since 2.8.0
      */
-    private void stopLocation(){
+    private void stopLocation() {
         // 停止定位
         locationClient.stopLocation();
     }
+
     /**
      * 定位监听
      */
@@ -377,6 +378,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return mOption;
     }
     ////////////////////////////////////////////////////////////////////////////////////////
+
     /**
      * 获取所有的传感器
      *

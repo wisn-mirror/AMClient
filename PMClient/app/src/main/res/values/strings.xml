@@ -55,5 +55,6 @@
     <string name="server_address">server address</string>
     <string name="password">Password</string>
     <string name="loginout">loginOut</string>
+    <string name="title_activity_base">BaseActivity</string>
 
 </resources>

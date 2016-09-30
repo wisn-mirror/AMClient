@@ -1,4 +1,4 @@
-package com.wisn.pm;
+package com.wisn.pm.bean;
 
 import android.graphics.drawable.Drawable;
 
