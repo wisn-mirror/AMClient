@@ -2,7 +2,6 @@ package com.wisn.pm.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +18,7 @@ import com.wisn.pm.R;
  * <br>
  */
 
-public class SetPinActivity extends AppCompatActivity implements View.OnClickListener {
+public class SetPinActivity extends BaseActivity implements View.OnClickListener {
     private EditText pinPassword;
     private EditText pinPassword2;
     private Button setPin_bt;

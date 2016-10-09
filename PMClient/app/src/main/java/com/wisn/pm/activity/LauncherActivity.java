@@ -1,6 +1,5 @@
 package com.wisn.pm.activity;
 
-import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -14,8 +13,8 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.wisn.pm.bean.ApkInfo;
 import com.wisn.pm.R;
+import com.wisn.pm.bean.ApkInfo;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -29,7 +28,7 @@ import java.util.List;
  * <br>
  */
 
-public class LauncherActivity extends Activity {
+public class LauncherActivity extends BaseActivity {
 
     private List<ResolveInfo> mApps;
     private List<ApkInfo>   ApkInfoList;

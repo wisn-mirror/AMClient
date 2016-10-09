@@ -3,7 +3,6 @@ package com.wisn.pm.activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -11,7 +10,7 @@ import android.widget.TextView;
 import com.wisn.pm.R;
 import com.wisn.pm.utils.BlurBitmap;
 
-public class BlurActivity extends AppCompatActivity {
+public class BlurActivity extends BaseActivity {
     /**
      * 原始图片控件
      */

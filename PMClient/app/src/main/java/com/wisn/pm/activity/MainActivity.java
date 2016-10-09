@@ -10,7 +10,6 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -24,8 +23,8 @@ import com.amap.api.location.AMapLocationListener;
 import com.wisn.pm.R;
 import com.wisn.pm.receiver.MyDeviceAdminReceiver;
 import com.wisn.pm.service.InstallApkService;
-import com.wisn.pm.utils.ToastUtils;
 import com.wisn.pm.utils.MapUtils;
+import com.wisn.pm.utils.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +33,7 @@ import de.tavendo.autobahn.WebSocketConnection;
 import de.tavendo.autobahn.WebSocketException;
 import de.tavendo.autobahn.WebSocketHandler;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
     private final String TAG = "de.tavendo.test1";
     private TextView finish;
     private TextView install_Listener;
