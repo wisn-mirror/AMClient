@@ -13,6 +13,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
         log.d(TAG,"onCreate");
+        /*for(int i=0;i<10000;i++){
+
+
+        }*/
     }
 
     @Override

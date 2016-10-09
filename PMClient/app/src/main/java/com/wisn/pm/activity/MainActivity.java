@@ -5,11 +5,14 @@ import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.os.RemoteException;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -32,9 +35,12 @@ import java.util.List;
 import de.tavendo.autobahn.WebSocketConnection;
 import de.tavendo.autobahn.WebSocketException;
 import de.tavendo.autobahn.WebSocketHandler;
+import vmc.project.content.IVMCContentService;
+import vmc.project.content.bean.VMCStatus;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
     private final String TAG = "de.tavendo.test1";
+    private TextView aidl;
     private TextView finish;
     private TextView install_Listener;
     private TextView manager;
@@ -56,6 +62,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
 
         finish = (TextView) findViewById(R.id.finish);
+        aidl = (TextView) findViewById(R.id.aidl);
         install_Listener = (TextView) findViewById(R.id.install_Listener);
         manager = (TextView) findViewById(R.id.manager);
         remove_manager = (TextView) findViewById(R.id.remove_manager);
@@ -68,6 +75,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         chatip = (EditText) findViewById(R.id.chatip);
 
         checkService();
+        aidl.setOnClickListener(this);
         finish.setOnClickListener(this);
         remove_manager.setOnClickListener(this);
         manager.setOnClickListener(this);
@@ -78,9 +86,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         getlog.setOnClickListener(this);
         getTemperature.setOnClickListener(this);
         getTemperature.setText(getSensor());
-
         initLocation();
-        startActivity(new Intent(this, BlurActivity.class));
+      //  startActivity(new Intent(this, BlurActivity.class));
     }
 
     /**
@@ -239,7 +246,53 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         } else if (view == finish) {
             this.finish();
+
+        }else if (view == aidl) {
+             //aidl 调用
+
+            aidl();
         }
+    }
+    IVMCContentService ContentService =null;
+    private void aidl() {
+
+        try {
+            //连接远程服务
+            ServiceConnection mServiceConnection = new ServiceConnection() {
+                @Override
+                public void onServiceConnected(ComponentName name, IBinder service) {
+                      ContentService =  IVMCContentService.Stub.asInterface(service);
+                    System.out.println(""+ ContentService);
+                    try {
+                        List<VMCStatus> status = ContentService.getStatus();
+                        if(status!=null){
+                            for (int i=0;i<status.size();i++){
+                                ToastUtils.show(MainActivity.this,""+status.get(i).value);
+                            }
+                        }
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                        ToastUtils.show(MainActivity.this,"eee异常" );
+                    }
+                }
+
+                @Override
+                public void onServiceDisconnected(ComponentName name) {
+                    ContentService = null;
+                }
+            };
+            //使用意图对象绑定开启服务
+            Intent intent = new Intent();
+            intent.setAction("vmc.project.content.ACTION_CONTENT");
+            //在5.0及以上版本必须要加上这个
+            intent.setPackage("com.want.vmc");
+            bindService(intent, mServiceConnection, Context.BIND_AUTO_CREATE);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            ToastUtils.show(MainActivity.this,"异常" );
+        }
+
     }
 
     @Override
