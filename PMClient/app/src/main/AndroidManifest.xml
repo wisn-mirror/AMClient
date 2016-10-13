@@ -93,12 +93,15 @@
             </intent-filter>
         </activity>
         -->
-
+        <!--高德定位-->
+        <service android:name="com.amap.api.location.APSService"></service>
         <activity android:name=".activity.BlurActivity" />
         <!--登陆Activity-->
         <activity android:name=".activity.LoginActivity" />
         <!--设置Pin-->
         <activity android:name=".activity.SetPinActivity" />
+        <!-- -->
+        <activity android:name=".activity.EditTextListViewActivity" />
 
         <service android:name=".service.InstallApkService" />
 

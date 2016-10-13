@@ -87,7 +87,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         getTemperature.setOnClickListener(this);
         getTemperature.setText(getSensor());
         initLocation();
-      //  startActivity(new Intent(this, BlurActivity.class));
+        startActivity(new Intent(this, EditTextListViewActivity.class));
     }
 
     /**
