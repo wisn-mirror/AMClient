@@ -1,6 +1,8 @@
 package com.wisn.pm.activity;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +27,7 @@ import java.util.List;
 public class EditTextListViewActivity extends BaseActivity {
 
     private ListView listView;
-    private List<String> data;
+    private List<Data> data;
 
     private BaseAdapter adapter;
 
@@ -35,8 +37,8 @@ public class EditTextListViewActivity extends BaseActivity {
         setContentView(R.layout.activity_listviewedittext);
         listView = (ListView) findViewById(R.id.list);
         data = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            data.add("data" + i);
+        for (int i = 0; i < 30; i++) {
+            data.add(new Data("data" + i,i));
         }
         adapter = new BaseAdapter() {
 
@@ -67,7 +69,8 @@ public class EditTextListViewActivity extends BaseActivity {
                     view.setTag(vh);
                 }
                 vh.editText.setTag(i);
-                vh.textView.setText(data.get(i));
+                vh.textView.setText(data.get(i).title);
+                vh.editText.setText(String.valueOf(data.get(i).pos));
                 final ViewHolder finalVh = vh;
                 vh.editText.setOnTouchListener(new View.OnTouchListener() {
                     @Override
@@ -90,9 +93,38 @@ public class EditTextListViewActivity extends BaseActivity {
                         finalVh.editText.setSelection(finalVh.editText.getText().length());
                     }
                 } else {
-                   // finalVh.editText.clearFocus();
+                    finalVh.editText.clearFocus();
 
                 }
+                final ViewHolder finalVh1 = vh;
+                vh.editText.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable editable) {
+                        String count =editable.toString().trim();
+                        // log.e(TAG, "修改后：mTouchItemPosition" + mTouchItemPosition + "position" + position);
+                        int tag = (int) finalVh1.editText.getTag();
+                        if (count == null || count.length() == 0||tag!=i)
+                            return;
+                        int inputCount = 0;
+                        try {
+                            inputCount = Integer.parseInt(count);
+                            finalVh1.textView.setText(editable.toString());
+                            data.get(i).pos=inputCount;
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
                 return view;
             }
         };
@@ -109,5 +141,14 @@ public class EditTextListViewActivity extends BaseActivity {
             this.editText = (EditText) rootView.findViewById(R.id.editText);
         }
 
+    }
+    public class  Data{
+        public  String  title;
+        public  int  pos;
+
+        public Data(String title, int pos) {
+            this.title = title;
+            this.pos = pos;
+        }
     }
 }
