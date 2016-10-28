@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PMClient.iml" filepath="$PROJECT_DIR$/PMClient.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_pm/lib_pm.iml" filepath="$PROJECT_DIR$/lib_pm/lib_pm.iml" />
     </modules>
   </component>
 </project>
