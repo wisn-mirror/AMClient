@@ -1,12 +1,5 @@
 package com.wisn.pmlib.service.core;
 
-import com.wisn.pm.service.MessageProcessor;
-
-import org.java_websocket.drafts.Draft;
-import org.java_websocket.drafts.Draft_10;
-
-import java.net.URI;
-
 /**
  * <b>Create Date:</b> 2016/10/13<br>
  * <b>Author:</b> Wisn(吴贻顺)<br>
@@ -32,7 +25,7 @@ public class WebSocketFactory {
     private WebSocketFactory() {
     }
 
-
+/*
     private WebSocketClientInstance clientServer(String address, MessageProcessor messageProcessor) {
         if(client!=null)
             return client;
@@ -46,5 +39,5 @@ public class WebSocketFactory {
             e.printStackTrace();
         }
         return client;
-    }
+    }*/
 }

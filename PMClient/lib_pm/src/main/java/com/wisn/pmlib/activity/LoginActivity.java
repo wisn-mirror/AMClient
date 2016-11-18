@@ -44,14 +44,14 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
+       /* switch (v.getId()) {
             case R.id.login:
                 submit();
                 break;
             case R.id.loginout:
                 loginOut();
                 break;
-        }
+        }*/
     }
 
 

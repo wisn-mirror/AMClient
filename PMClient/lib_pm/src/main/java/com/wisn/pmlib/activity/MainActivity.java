@@ -19,6 +19,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationClientOption;
+import com.amap.api.location.AMapLocationListener;
 import com.wisn.pmlib.R;
 import com.wisn.pmlib.api.DeviceInfo;
 import com.wisn.pmlib.receiver.MyDeviceAdminReceiver;
@@ -29,6 +33,11 @@ import com.wisn.pmlib.utils.ToastUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.tavendo.autobahn.WebSocketConnection;
+import de.tavendo.autobahn.WebSocketException;
+import de.tavendo.autobahn.WebSocketHandler;
+import vmc.project.content.IVMCContentService;
+import vmc.project.content.bean.VMCStatus;
 
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
@@ -69,7 +78,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         getlog = (TextView) findViewById(R.id.getlog);
         chatip = (EditText) findViewById(R.id.chatip);
         DeviceInfo deviceInfo = new DeviceInfo(this);//.getDeviceName()
-        Version.setText(deviceInfo.getVersionName()+deviceInfo.getVersionCode());
+        Version.setText("vernameName:"+deviceInfo.getVersionName()+" code:"+deviceInfo.getVersionCode());
         checkService();
         aidl.setOnClickListener(this);
         finish.setOnClickListener(this);

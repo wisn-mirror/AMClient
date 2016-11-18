@@ -1,6 +1,7 @@
 package com.wisn.pmlib.service.core;
 
-import com.wisn.pm.service.MessageProcessor;
+
+import com.wisn.pmlib.service.MessageProcessor;
 
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.drafts.Draft;
@@ -18,7 +19,7 @@ import java.util.Map;
  */
 
 public class WebSocketClientInstance  extends WebSocketClient {
-    private MessageProcessor  messageProcessor;
+    private MessageProcessor messageProcessor;
     public void  setMessageProcessor( MessageProcessor  messageProcessor){
         this.messageProcessor=messageProcessor;
     }
