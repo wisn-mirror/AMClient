@@ -1,4 +1,4 @@
-package com.wisn.pmlib.activity;
+package com.wisn.pmlib.activity.pm;
 
 import android.app.ActivityManager;
 import android.app.admin.DevicePolicyManager;
@@ -24,6 +24,7 @@ import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.wisn.pmlib.R;
+import com.wisn.pmlib.activity.base.BaseActivity;
 import com.wisn.pmlib.api.DeviceInfo;
 import com.wisn.pmlib.receiver.MyDeviceAdminReceiver;
 import com.wisn.pmlib.service.InstallApkService;

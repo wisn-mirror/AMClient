@@ -1,4 +1,4 @@
-package com.wisn.pmlib.activity;
+package com.wisn.pmlib.activity.pm;
 
 import android.content.ComponentName;
 import android.content.Intent;
@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.wisn.pmlib.R;
+import com.wisn.pmlib.activity.base.BaseActivity;
 import com.wisn.pmlib.bean.ApkInfo;
 
 import java.util.ArrayList;

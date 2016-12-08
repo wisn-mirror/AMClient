@@ -1,4 +1,4 @@
-package com.wisn.pmlib.activity;
+package com.wisn.pmlib.activity.pm;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.wisn.pmlib.R;
+import com.wisn.pmlib.activity.base.BaseActivity;
 
 
 /**

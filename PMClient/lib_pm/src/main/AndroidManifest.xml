@@ -73,13 +73,21 @@
             android:name="com.amap.api.v2.apikey"
             android:value="ab8aeddfb036ce1fe61fef2dbad0a509" />
 
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.base.FirstActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.pm.MainActivity" />
+        <activity android:name=".activity.other.BlurActivity" />
+        <!--登陆Activity-->
+        <activity android:name=".activity.pm.LoginActivity" />
+        <!--设置Pin-->
+        <activity android:name=".activity.pm.SetPinActivity" />
+        <!-- -->
+        <activity android:name=".activity.other.EditTextListViewActivity" />
         <!--  桌面
         <activity android:name=".activity.LauncherActivity"
             android:label="@string/launcher">
@@ -93,14 +101,6 @@
         -->
         <!--高德定位-->
         <service android:name="com.amap.api.location.APSService"></service>
-        <activity android:name=".activity.BlurActivity" />
-        <!--登陆Activity-->
-        <activity android:name=".activity.LoginActivity" />
-        <!--设置Pin-->
-        <activity android:name=".activity.SetPinActivity" />
-        <!-- -->
-        <activity android:name=".activity.EditTextListViewActivity" />
-
         <service android:name=".service.InstallApkService" />
 
         <receiver

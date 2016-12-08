@@ -1,4 +1,4 @@
-package com.wisn.pmlib.activity;
+package com.wisn.pmlib.activity.other;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,6 +8,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.wisn.pmlib.R;
+import com.wisn.pmlib.activity.base.BaseActivity;
 import com.wisn.pmlib.utils.BlurBitmap;
 
 

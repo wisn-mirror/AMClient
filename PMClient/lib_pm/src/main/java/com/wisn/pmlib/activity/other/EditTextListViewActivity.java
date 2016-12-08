@@ -1,4 +1,4 @@
-package com.wisn.pmlib.activity;
+package com.wisn.pmlib.activity.other;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.wisn.pmlib.R;
+import com.wisn.pmlib.activity.base.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
