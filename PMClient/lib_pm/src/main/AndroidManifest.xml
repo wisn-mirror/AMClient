@@ -15,6 +15,7 @@
     <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="org.wso2.emm.agent.permission.C2D_MESSAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
@@ -86,8 +87,10 @@
         <activity android:name=".activity.pm.LoginActivity" />
         <!--设置Pin-->
         <activity android:name=".activity.pm.SetPinActivity" />
-        <!-- -->
+        <!--ListView编辑EditText -->
         <activity android:name=".activity.other.EditTextListViewActivity" />
+        <!--断点续传-->
+        <activity android:name=".activity.downloader.DownloadActivity" />
         <!--  桌面
         <activity android:name=".activity.LauncherActivity"
             android:label="@string/launcher">
