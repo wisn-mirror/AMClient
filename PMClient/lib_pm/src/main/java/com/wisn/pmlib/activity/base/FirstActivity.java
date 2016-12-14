@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.wisn.pmlib.R;
 import com.wisn.pmlib.activity.downloader.DownloadActivity;
+import com.wisn.pmlib.activity.testjson.TestJson;
 
 /**
  * Created by wisn on 2016/12/8.
@@ -16,6 +17,7 @@ public class FirstActivity extends BaseActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
 //        startActivity(new Intent(FirstActivity.this,MainActivity.class));
-        startActivity(new Intent(FirstActivity.this,DownloadActivity.class));
+        startActivity(new Intent(FirstActivity.this,TestJson.class));
+//        startActivity(new Intent(FirstActivity.this,DownloadActivity.class));
     }
 }
