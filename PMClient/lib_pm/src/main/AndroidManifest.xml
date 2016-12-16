@@ -91,6 +91,7 @@
         <!--断点续传-->
         <activity android:name=".activity.downloader.DownloadActivity" />
         <activity android:name=".activity.testjson.TestJson"/>
+        <activity android:name=".activity.downloads.DownloadActivity"/>
         <!--  桌面
         <activity android:name=".activity.LauncherActivity"
             android:label="@string/launcher">

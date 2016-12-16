@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.wisn.pmlib.R;
-import com.wisn.pmlib.activity.downloader.DownloadActivity;
+import com.wisn.pmlib.activity.downloads.DownloadActivity;
 import com.wisn.pmlib.activity.testjson.TestJson;
 
 /**
@@ -16,8 +16,9 @@ public class FirstActivity extends BaseActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
-//        startActivity(new Intent(FirstActivity.this,MainActivity.class));
-        startActivity(new Intent(FirstActivity.this,TestJson.class));
+//        startActivity(new Intent(FirstActivity.this,com.wisn.pmlib.activity.downloads.DownloadActivity.class));
+//        startActivity(new Intent(FirstActivity.this,TestJson.class));
+        startActivity(new Intent(FirstActivity.this,DownloadActivity.class));
 //        startActivity(new Intent(FirstActivity.this,DownloadActivity.class));
     }
 }

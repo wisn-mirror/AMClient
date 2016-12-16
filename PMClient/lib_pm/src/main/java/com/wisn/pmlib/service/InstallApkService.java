@@ -207,7 +207,7 @@ public class InstallApkService  extends Service {
         /*runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(MainActivity.this,content,Toast.LENGTH_SHORT).show();
+                Toast.makeText(com.wisn.pmlib.activity.downloads.DownloadActivity.this,content,Toast.LENGTH_SHORT).show();
             }
         });*/
     }
