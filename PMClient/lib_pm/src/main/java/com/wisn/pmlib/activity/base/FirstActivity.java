@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.wisn.pmlib.R;
 import com.wisn.pmlib.activity.alarm.AlarmActivity;
+import com.wisn.pmlib.activity.pm.MainActivity;
 import com.wisn.pmlib.receiver.AlarmRecever;
 
 /**
@@ -22,13 +23,14 @@ public class FirstActivity extends BaseActivity{
 //        startActivity(new Intent(FirstActivity.this,TestJson.class));
        // startActivity(new Intent(FirstActivity.this,DownloadActivity.class));
 //        startActivity(new Intent(FirstActivity.this,DownloadActivity.class));
-//        startActivity(new Intent(FirstActivity.this,MainActivity.class));
+        startActivity(new Intent(FirstActivity.this,MainActivity.class));
+        this.finish();
        /* findViewById(R.id.first).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.e("FirstActivity",System.currentTimeMillis()+"");
             }
         });*/
-        startActivity(new Intent(this, AlarmActivity.class));
+//        startActivity(new Intent(this, AlarmActivity.class));
     }
 }

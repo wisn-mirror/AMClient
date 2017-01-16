@@ -1,0 +1,11 @@
+shell方式的飞行只能开关data数据流量，不能关闭wifi
+打开飞行
+settings put global airplane_mode_on 1
+am broadcast -a android.intent.action.AIRPLANE_MODE –ez state true
+关闭飞行
+settings put global airplane_mode_on 0
+am broadcast -a android.intent.action.AIRPLANE_MODE –ez state false
+打开wifi
+svc wifi enable
+关闭wifi
+svc wifi disable

@@ -43,6 +43,7 @@ import vmc.project.content.bean.VMCStatus;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
     private final String TAG = "de.tavendo.test1";
+    private TextView RestartOtherApp;
     private TextView Version;
     private TextView aidl;
     private TextView finish;
@@ -64,7 +65,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        RestartOtherApp = (TextView) findViewById(R.id.RestartOtherApp);
         Version = (TextView) findViewById(R.id.Version);
         finish = (TextView) findViewById(R.id.finish);
         aidl = (TextView) findViewById(R.id.aidl);
@@ -81,6 +82,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         DeviceInfo deviceInfo = new DeviceInfo(this);//.getDeviceName()
         Version.setText("vernameName:"+deviceInfo.getVersionName()+" code:"+deviceInfo.getVersionCode());
         checkService();
+        RestartOtherApp.setOnClickListener(this);
         aidl.setOnClickListener(this);
         finish.setOnClickListener(this);
         remove_manager.setOnClickListener(this);
@@ -96,81 +98,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
        // startActivity(new Intent(this, EditTextListViewActivity.class));
     }
 
-    /**
-     * 检测服务是否在运行
-     */
-    private void checkService() {
-        if (mConnection == null) {
-            mConnection = new WebSocketConnection();
-        }
-        deviceManager = (DevicePolicyManager) this
-                .getSystemService(this.DEVICE_POLICY_SERVICE);
-        // 中间人，用于判断是否开启管理者权限的
-        com = new ComponentName(this, MyDeviceAdminReceiver.class);
-        if (!isWorked()) {
-            install_Listener.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    install_Listener.setText("已经开始监听文件夹");
-                    startService(new Intent(MainActivity.this, InstallApkService.class));
-                }
-            });
-        } else {
-            install_Listener.setText("已经开始监听文件夹");
-        }
-    }
-
-    public boolean isWorked() {
-        ActivityManager myManager = (ActivityManager) this.getSystemService(Context.ACTIVITY_SERVICE);
-        ArrayList<ActivityManager.RunningServiceInfo> runningService = (ArrayList<ActivityManager.RunningServiceInfo>) myManager.getRunningServices(40);
-        for (int i = 0; i < runningService.size(); i++) {
-            System.out.println("packagename:" + runningService.get(i).service.getClassName().toString());
-            if (runningService.get(i).service.getClassName().toString().equals("com.install.pminstall.InstallApkService")) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public void open_websocket(final TextView tv) {
-        // final String wsuri = "ws://10.128.230.59:8080/websocket01/chat.ws?username=wisn";
-        final String wsuri = "ws://" + chatip.getText().toString().trim() + ":8080/PM/chat.ws?username=wisn11";
-        try {
-            mConnection.connect(wsuri, new WebSocketHandler() {
-                @Override
-                public void onOpen() {
-                    Log.d(TAG, "Status: Connected to " + wsuri);
-                    mConnection.sendTextMessage("发送请求" + System.currentTimeMillis());
-                    ToastUtils.show(MainActivity.this, "建立连接成功！");
-                }
-
-                @Override
-                public void onTextMessage(final String payload) {
-                    Log.d(TAG, "Got echo: " + payload);
-                    ToastUtils.show(MainActivity.this, "长链接返回" + payload);
-                    tv.setText(String.valueOf(payload));
-                }
-
-                @Override
-                public void onClose(int code, String reason) {
-                    Log.d(TAG, "Connection lost.");
-                }
-
-                @Override
-                public void onBinaryMessage(byte[] payload) {
-                    super.onBinaryMessage(payload);
-                }
-
-                @Override
-                public void onRawTextMessage(byte[] payload) {
-                    super.onRawTextMessage(payload);
-                }
-            });
-        } catch (WebSocketException e) {
-            Log.d(TAG, e.toString());
-        }
-    }
-
     @Override
     public void onClick(View view) {
         if (view == remove_manager) {
@@ -181,6 +108,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             } else {
                 ToastUtils.show(MainActivity.this, "未注册管理者权限");
             }
+        } else if (view == RestartOtherApp) {
+            //重新启动其他的app
+
+
         } else if (view == manager) {
             Intent openadmin = new Intent(
                     DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
@@ -259,6 +190,82 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             aidl();
         }
     }
+
+    /**
+     * 检测服务是否在运行
+     */
+    private void checkService() {
+        if (mConnection == null) {
+            mConnection = new WebSocketConnection();
+        }
+        deviceManager = (DevicePolicyManager) this
+                .getSystemService(this.DEVICE_POLICY_SERVICE);
+        // 中间人，用于判断是否开启管理者权限的
+        com = new ComponentName(this, MyDeviceAdminReceiver.class);
+        if (!isWorked()) {
+            install_Listener.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    install_Listener.setText("已经开始监听文件夹");
+                    startService(new Intent(MainActivity.this, InstallApkService.class));
+                }
+            });
+        } else {
+            install_Listener.setText("已经开始监听文件夹");
+        }
+    }
+
+    public boolean isWorked() {
+        ActivityManager myManager = (ActivityManager) this.getSystemService(Context.ACTIVITY_SERVICE);
+        ArrayList<ActivityManager.RunningServiceInfo> runningService = (ArrayList<ActivityManager.RunningServiceInfo>) myManager.getRunningServices(40);
+        for (int i = 0; i < runningService.size(); i++) {
+            System.out.println("packagename:" + runningService.get(i).service.getClassName().toString());
+            if (runningService.get(i).service.getClassName().toString().equals("com.install.pminstall.InstallApkService")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void open_websocket(final TextView tv) {
+        // final String wsuri = "ws://10.128.230.59:8080/websocket01/chat.ws?username=wisn";
+        final String wsuri = "ws://" + chatip.getText().toString().trim() + ":8080/PM/chat.ws?username=wisn11";
+        try {
+            mConnection.connect(wsuri, new WebSocketHandler() {
+                @Override
+                public void onOpen() {
+                    Log.d(TAG, "Status: Connected to " + wsuri);
+                    mConnection.sendTextMessage("发送请求" + System.currentTimeMillis());
+                    ToastUtils.show(MainActivity.this, "建立连接成功！");
+                }
+
+                @Override
+                public void onTextMessage(final String payload) {
+                    Log.d(TAG, "Got echo: " + payload);
+                    ToastUtils.show(MainActivity.this, "长链接返回" + payload);
+                    tv.setText(String.valueOf(payload));
+                }
+
+                @Override
+                public void onClose(int code, String reason) {
+                    Log.d(TAG, "Connection lost.");
+                }
+
+                @Override
+                public void onBinaryMessage(byte[] payload) {
+                    super.onBinaryMessage(payload);
+                }
+
+                @Override
+                public void onRawTextMessage(byte[] payload) {
+                    super.onRawTextMessage(payload);
+                }
+            });
+        } catch (WebSocketException e) {
+            Log.d(TAG, e.toString());
+        }
+    }
+
     IVMCContentService ContentService =null;
     private void aidl() {
 
