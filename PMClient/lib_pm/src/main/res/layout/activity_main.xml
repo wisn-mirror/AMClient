@@ -69,6 +69,14 @@
                 android:background="#e75d50"
                 android:gravity="center"
                 android:text="打开管理者权限" />
+            <TextView
+                android:id="@+id/reboot"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp"
+                android:background="#e75d50"
+                android:gravity="center"
+                android:text="打开管理者权限后重启" />
 
             <TextView
                 android:id="@+id/remove_manager"
@@ -86,6 +94,7 @@
                 android:layout_marginTop="5dp"
                 android:background="#77a8c4"
                 android:hint="ip"
+                android:gravity="center"
                 android:text="10.128.230.59" />
 
             <TextView

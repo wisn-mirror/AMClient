@@ -12,6 +12,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.os.PowerManager;
 import android.os.RemoteException;
 import android.text.TextUtils;
 import android.util.Log;
@@ -56,6 +57,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private TextView location_ring;
     private TextView getlog;
     private TextView getTemperature;
+    private TextView reboot;
     private EditText chatip;
     private ComponentName com;
     private DevicePolicyManager deviceManager;
@@ -77,6 +79,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         location = (TextView) findViewById(R.id.location);
         getTemperature = (TextView) findViewById(R.id.getTemperature);
         location_ring = (TextView) findViewById(R.id.location_ring);
+        reboot = (TextView) findViewById(R.id.reboot);
         getlog = (TextView) findViewById(R.id.getlog);
         chatip = (EditText) findViewById(R.id.chatip);
         DeviceInfo deviceInfo = new DeviceInfo(this);//.getDeviceName()
@@ -93,6 +96,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         location_ring.setOnClickListener(this);
         getlog.setOnClickListener(this);
         getTemperature.setOnClickListener(this);
+        reboot.setOnClickListener(this);
         getTemperature.setText(getSensor());
         initLocation();
        // startActivity(new Intent(this, EditTextListViewActivity.class));
@@ -186,8 +190,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         }else if (view == aidl) {
              //aidl 调用
-
             aidl();
+        }else if(view==reboot){
+            try{
+                PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+                powerManager.reboot(null);
+            }catch(Exception e){
+                Log.e(TAG,e.getMessage());
+            }
+
         }
     }
 
