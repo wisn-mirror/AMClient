@@ -14,7 +14,6 @@ import org.json.JSONObject;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 /**
  * Created by wisn on 2016/12/14.

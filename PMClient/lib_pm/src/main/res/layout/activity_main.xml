@@ -49,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginTop="5dp"
-                android:background="#5eec12"
+                android:background="#53c217"
                 android:gravity="center"
                 android:text="finish" />
             <TextView
@@ -59,7 +59,7 @@
                 android:layout_marginTop="5dp"
                 android:background="#e4cb50"
                 android:gravity="center"
-                android:text="Root安装监听" />
+                android:text="Root安装监听开启" />
 
             <TextView
                 android:id="@+id/manager"
@@ -74,7 +74,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginTop="5dp"
-                android:background="#e75d50"
+                android:background="#c67971"
                 android:gravity="center"
                 android:text="打开管理者权限后重启" />
 

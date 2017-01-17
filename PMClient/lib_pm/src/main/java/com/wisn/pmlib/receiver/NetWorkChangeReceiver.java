@@ -21,8 +21,24 @@ public class NetWorkChangeReceiver extends BroadcastReceiver{
         NetworkInfo mobileInfo = manager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
         NetworkInfo wifiInfo = manager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
         NetworkInfo activeInfo = manager.getActiveNetworkInfo();
-        Toast.makeText(context, "mobile:" + mobileInfo.isConnected() + "\n" + "wifi:" + wifiInfo.isConnected()
-                                + "\n" + "active:" + activeInfo.getTypeName(), Toast.LENGTH_SHORT).show();
+        StringBuilder  message=new StringBuilder();
+        if(mobileInfo!=null){
+            message.append("mobile:" + mobileInfo.isConnected() + "\n");
+        }
+        if(wifiInfo!=null){
+            message.append("wifi:" + wifiInfo.isConnected() + "\n");
+        }
+        if(activeInfo!=null){
+            message.append("active:" + mobileInfo.getTypeName() + "\n");
+        }
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
         //如果无网络连接activeInfo为null
+
+        ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo wifi = connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+
+        if (wifi.isConnected()) {
+            Toast.makeText(context,"wifi 变化"+wifi.toString(),Toast.LENGTH_SHORT).show();
+        }
     }
 }
