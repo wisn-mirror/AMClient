@@ -110,6 +110,7 @@
         <activity android:name=".activity.testjson.TestJson"/>
         <activity android:name=".activity.downloads.DownloadActivity"/>
         <activity android:name=".activity.alarm.AlarmActivity"/>
+        <activity android:name=".activity.ssl.SSLActivity"/>
         <!--  桌面
         <activity android:name=".activity.LauncherActivity"
             android:label="@string/launcher">
