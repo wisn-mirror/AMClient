@@ -1,0 +1,12 @@
+<manifest
+    package="com.wisn.pm"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:name=".BMachineApplication"
+        tools:replace="android:name">
+
+    </application>
+
+</manifest>

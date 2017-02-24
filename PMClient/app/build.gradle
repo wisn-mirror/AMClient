@@ -42,6 +42,48 @@ android {
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/LICENSE.txt'
     }
+    flavorDimensions 'product', 'machine', 'version'
+    productFlavors{
+
+        ////////////////////////////////////////////////////////////////////////
+        build_debug {
+            dimension 'product'
+        }
+
+        // 产生测试环境的产品
+        build_test {
+            dimension 'product'
+        }
+
+        // 产生预生产环境环境的产品
+        build_prerelease {
+            dimension 'product'
+        }
+
+        // 产生生产环境环境的产品
+        build_release {
+            dimension 'product'
+        }
+
+        ////////////////////////////////////////////////////////////////////////
+        machine_a{
+            dimension 'machine'
+        }
+
+        machine_b{
+            dimension 'machine'
+        }
+
+        ////////////////////////////////////////////////////////////////////////
+        flavor_a{
+            dimension 'version'
+        }
+
+        flavor_b{
+            dimension 'version'
+        }
+
+    }
     android.applicationVariants.all { variant ->
         variant.outputs.each { output ->
             output.outputFile = new File(output.outputFile.parent, defaultConfig.applicationId + "-" + buildType.name + "-v" +
