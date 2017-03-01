@@ -111,6 +111,7 @@
         <activity android:name=".activity.downloads.DownloadActivity"/>
         <activity android:name=".activity.alarm.AlarmActivity"/>
         <activity android:name=".activity.ssl.SSLActivity"/>
+        <activity android:name=".activity.unzip.UnZipActivity"/>
         <!--  桌面
         <activity android:name=".activity.LauncherActivity"
             android:label="@string/launcher">
