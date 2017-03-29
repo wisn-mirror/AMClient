@@ -7,7 +7,6 @@ import android.widget.TextView;
 
 import com.wisn.pmlib.R;
 import com.wisn.pmlib.activity.base.BaseActivity;
-import com.wisn.pmlib.utils.ToastUtils;
 import com.wisn.pmlib.utils.UnzipFromAssets;
 
 import java.io.File;
@@ -50,10 +49,10 @@ public class UnZipActivity extends BaseActivity {
            if (!folder.exists()) {
                folder.mkdirs();
            }
-           unzipFromAssets.unZip(UnZipActivity.this,
-                                 "package.zip",
-                                 folder.getAbsolutePath(),
-                                 new UnzipFromAssets.UnZipListener() {
+           unzipFromAssets.unZipFile(UnZipActivity.this,
+                                     "package.zip",
+                                     folder.getAbsolutePath(),
+                                     new UnzipFromAssets.UnZipListener() {
 
                                      @Override
                                      public void unZipProgress(int count, int sum) {

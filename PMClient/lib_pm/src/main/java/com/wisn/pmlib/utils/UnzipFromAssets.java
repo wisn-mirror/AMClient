@@ -2,12 +2,16 @@ package com.wisn.pmlib.utils;
 
 import android.content.Context;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
+import java.util.zip.ZipOutputStream;
 
 /**
  * Created by wisn on 2017/3/9.
@@ -16,6 +20,7 @@ import java.util.zip.ZipInputStream;
 public class UnzipFromAssets {
     private String TAG="UnzipFromAssets";
     private static boolean isZip=false;
+
     public interface UnZipListener {
         void unZipProgress(int count, int sum);
 
@@ -24,6 +29,14 @@ public class UnzipFromAssets {
         void start(int sum);
 
         void unZipCurrent(int current);
+    }
+    public interface ZipListener{
+
+        void finish(long totalTime);
+
+        void start();
+
+        void zipCurrent(int current);
     }
 
     /**
@@ -35,8 +48,8 @@ public class UnzipFromAssets {
      *
      * @throws IOException
      */
-    public void unZip(final Context context, final String assetName, final String outputDirectory,
-                      final UnZipListener unZipListener) {
+    public void unZipFile(final Context context, final String assetName, final String outputDirectory,
+                          final UnZipListener unZipListener) {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -119,7 +132,71 @@ public class UnzipFromAssets {
                 }
             }
         }).start();
-
     }
 
+//////////**********压缩************/////////////
+    public static int current;
+    /**
+     *
+     * @param zipFileName  目标压缩文件
+     * @param inputFile  输入的文件
+     * @throws Exception
+     */
+    public static void zipFile(final String zipFileName, final File inputFile, final ZipListener zipListener) throws Exception {
+        current=0;
+       new Thread(new Runnable() {
+           @Override
+           public void run() {
+               long startTime = System.currentTimeMillis();
+               if(zipListener!=null){
+                   zipListener.start();
+               }
+               try{
+                   ZipOutputStream out = new ZipOutputStream(new FileOutputStream(
+                           zipFileName));
+                   if(zipListener!=null){
+                       zipListener.zipCurrent(0);
+                   }
+                   BufferedOutputStream bo = new BufferedOutputStream(out);
+                   zip(out, inputFile, inputFile.getName(), bo, zipListener);
+                   bo.close();
+                   out.close(); // 输出流关闭
+               }catch(Exception e){
+                   e.printStackTrace();
+               }finally {
+                   if(zipListener!=null){
+                       zipListener.finish(System.currentTimeMillis()-startTime);
+                   }
+               }
+           }
+       }).start();
+    }
+
+    private static  void zip(ZipOutputStream out, File f, String base,
+                     BufferedOutputStream bo, final ZipListener zipListener) throws Exception { // 方法重载
+        if (f.isDirectory()) {
+            File[] fl = f.listFiles();
+            if (fl.length == 0) {
+                out.putNextEntry(new ZipEntry(base + File.separator)); // 创建zip压缩进入点base
+            }
+            for (int i = 0; i < fl.length; i++) {
+                zip(out, fl[i], base +File.separator + fl[i].getName(), bo,zipListener); // 递归遍历子文件夹
+            }
+            if(zipListener!=null){
+                current++;
+                zipListener.zipCurrent(current);
+            }
+        } else {
+            out.putNextEntry(new ZipEntry(base)); // 创建zip压缩进入点base
+            System.out.println(base);
+            FileInputStream in = new FileInputStream(f);
+            BufferedInputStream bi = new BufferedInputStream(in);
+            int b;
+            while ((b = bi.read()) != -1) {
+                bo.write(b); // 将字节流写入当前zip目录
+            }
+            bi.close();
+            in.close(); // 输入流关闭
+        }
+    }
 }
