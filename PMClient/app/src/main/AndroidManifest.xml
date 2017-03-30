@@ -5,14 +5,13 @@
 
     <application
         android:icon="${icon}"
+        android:theme="${WisnTheme}"
         >
-
+        <!--android:theme="${WisnTheme}"-->
         <meta-data
             android:name="CName"
             android:value="${CName_value}"
-            android:theme="${WisnTheme}"
             tools:replace="android:value"/>
 
-        <!--android:theme="${WisnTheme}"-->
     </application>
 </manifest>
