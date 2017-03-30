@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.wisn.pm">
 
+    <application
+        android:icon="${icon}"
+        >
+
+        <meta-data
+            android:name="CName"
+            android:value="${CName_value}"
+            android:theme="${WisnTheme}"
+            tools:replace="android:value"/>
+
+        <!--android:theme="${WisnTheme}"-->
+    </application>
 </manifest>

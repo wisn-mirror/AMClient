@@ -6,7 +6,6 @@
     <application
         android:name=".BMachineApplication"
         tools:replace="android:name">
-
     </application>
 
 </manifest>

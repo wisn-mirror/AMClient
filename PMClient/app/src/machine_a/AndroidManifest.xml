@@ -5,7 +5,8 @@
 
     <application
         android:name=".AMachineApplication"
-        tools:replace="android:name">
+        tools:replace="android:name"
+        >
 
     </application>
 

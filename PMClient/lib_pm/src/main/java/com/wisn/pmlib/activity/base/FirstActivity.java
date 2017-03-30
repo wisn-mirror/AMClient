@@ -1,9 +1,12 @@
 package com.wisn.pmlib.activity.base;
 
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.wisn.pmlib.R;
 import com.wisn.pmlib.activity.alarm.AlarmActivity;
@@ -28,14 +31,25 @@ public class FirstActivity extends BaseActivity{
 //        startActivity(new Intent(FirstActivity.this,DownloadActivity.class));
 //        startActivity(new Intent(FirstActivity.this,MainActivity.class));
 //        startActivity(new Intent(FirstActivity.this,UnZipActivity.class));
-        startActivity(new Intent(FirstActivity.this,TestIntentActivity.class));
-        this.finish();
-       /* findViewById(R.id.first).setOnClickListener(new View.OnClickListener() {
+        //startActivity(new Intent(FirstActivity.this,TestIntentActivity.class));
+        //startActivity(new Intent(this, AlarmActivity.class));
+        //this.finish();
+        final TextView tv= (TextView) findViewById(R.id.first);
+        tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("FirstActivity",System.currentTimeMillis()+"");
+                try{
+                    ApplicationInfo appInfo = FirstActivity.this.getPackageManager()
+                                                                .getApplicationInfo(getPackageName(),
+                                                                                    PackageManager.GET_META_DATA);
+                    String msg=appInfo.metaData.getString("CName");
+                    Log.d(TAG, " CName == " + msg );
+                    tv.setText(" CName == " + msg);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
             }
-        });*/
-//        startActivity(new Intent(this, AlarmActivity.class));
+        });
+
     }
 }

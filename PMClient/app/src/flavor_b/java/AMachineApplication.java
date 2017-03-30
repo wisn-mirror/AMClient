@@ -1,3 +1,5 @@
+import android.util.Log;
+
 import com.wisn.pmlib.application.MApplication;
 
 /**
@@ -9,6 +11,6 @@ public class AMachineApplication extends MApplication{
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.e(TAG,"com.wisn.pm.AMachineApplication");
+        Log.e(TAG, "com.wisn.pm.AMachineApplication");
     }
 }

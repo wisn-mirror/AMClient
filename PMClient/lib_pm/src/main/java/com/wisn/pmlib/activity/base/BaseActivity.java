@@ -17,7 +17,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_base);
         log.d(TAG, "onCreate");
     }
-//    dispatchTouchEvent
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {

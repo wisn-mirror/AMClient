@@ -1,4 +1,7 @@
 apply plugin: 'com.android.application'
+//用于存放隐私的信息
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
 android {
     compileSdkVersion 23
@@ -10,6 +13,8 @@ android {
         versionCode 15
         versionName "15"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders= [ CName_value:"default",WisnTheme:"@style/AppTheme1","icon":"@mipmap/ic_launcher" ]
+
     }
     dataBinding {
         enabled true
@@ -28,10 +33,12 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
             signingConfig signingConfigs.release
+
         }
 
         debug {
             signingConfig signingConfigs.release
+
         }
     }
     packagingOptions {
@@ -45,7 +52,7 @@ android {
     flavorDimensions 'product', 'machine', 'version'
     productFlavors{
 
-        ////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////product/////////////////////////////////////////
         build_debug {
             dimension 'product'
         }
@@ -65,7 +72,7 @@ android {
             dimension 'product'
         }
 
-        ////////////////////////////////////////////////////////////////////////
+        /////////////////////////////machine///////////////////////////////////////////
         machine_a{
             dimension 'machine'
         }
@@ -74,15 +81,20 @@ android {
             dimension 'machine'
         }
 
-        ////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////version/////////////////////////////////////////
         flavor_a{
             dimension 'version'
+            manifestPlaceholders= [ CName_value:properties.getProperty("CNameAAA"), WisnTheme:"@style/AppTheme1","icon":"@mipmap/ic_launcher" ]
         }
 
         flavor_b{
             dimension 'version'
+            manifestPlaceholders= [ CName_value:properties.getProperty("CNameBBB"),WisnTheme:"@style/AppTheme2","icon":"@mipmap/want" ]
         }
 
+      }
+    productFlavors.all {
+//        flavor -> flavor.manifestPlaceholders = [CName_value: ]
     }
     android.applicationVariants.all { variant ->
         variant.outputs.each { output ->
