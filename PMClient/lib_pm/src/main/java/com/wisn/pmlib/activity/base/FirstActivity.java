@@ -13,6 +13,7 @@ import com.wisn.pmlib.activity.alarm.AlarmActivity;
 import com.wisn.pmlib.activity.intent.TestIntentActivity;
 import com.wisn.pmlib.activity.pm.MainActivity;
 import com.wisn.pmlib.activity.ssl.SSLActivity;
+import com.wisn.pmlib.activity.tips.SnackbarActivity;
 import com.wisn.pmlib.activity.unzip.UnZipActivity;
 import com.wisn.pmlib.receiver.AlarmRecever;
 
@@ -33,7 +34,8 @@ public class FirstActivity extends BaseActivity{
 //        startActivity(new Intent(FirstActivity.this,UnZipActivity.class));
         //startActivity(new Intent(FirstActivity.this,TestIntentActivity.class));
         //startActivity(new Intent(this, AlarmActivity.class));
-        //this.finish();
+        startActivity(new Intent(this, SnackbarActivity.class));
+        this.finish();
         final TextView tv= (TextView) findViewById(R.id.first);
         tv.setOnClickListener(new View.OnClickListener() {
             @Override
