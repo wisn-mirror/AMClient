@@ -1,12 +1,10 @@
 package com.wisn.pmlib.utils;
 
 import android.graphics.Color;
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.Snackbar;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
