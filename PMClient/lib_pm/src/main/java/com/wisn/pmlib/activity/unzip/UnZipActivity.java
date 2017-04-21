@@ -17,7 +17,7 @@ import java.io.File;
 
 public class UnZipActivity extends BaseActivity {
     int countall =0;
-    private TextView mTestResult;
+    TextView mTestResult;
     ScrollView sv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

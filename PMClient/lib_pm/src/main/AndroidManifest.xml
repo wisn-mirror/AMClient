@@ -43,6 +43,7 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="vmc.project.content.READ_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS"/>
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
@@ -70,13 +71,15 @@
         <activity android:name=".activity.other.EditTextListViewActivity" />
         <!--断点续传-->
         <activity android:name=".activity.downloader.DownloadActivity" />
-        <activity android:name=".activity.testjson.TestJson"/>
+        <activity android:name=".activity.test.TestJsonActivity"/>
         <activity android:name=".activity.downloads.DownloadActivity"/>
         <activity android:name=".activity.alarm.AlarmActivity"/>
         <activity android:name=".activity.ssl.SSLActivity"/>
         <activity android:name=".activity.unzip.UnZipActivity"/>
         <activity android:name=".activity.intent.TestIntentActivity"/>
         <activity android:name=".activity.tips.SnackbarActivity"/>
+        <activity android:name=".activity.test.TestWso2RestActivity"/>
+        <activity android:name=".activity.ssl.HttpUrlConnectionSSLActivity"/>
         <!--  桌面
         <activity android:name=".activity.LauncherActivity"
             android:label="@string/launcher">

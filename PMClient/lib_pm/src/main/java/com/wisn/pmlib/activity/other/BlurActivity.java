@@ -55,18 +55,28 @@ public class BlurActivity extends BaseActivity {
 
         // 初始化视图
         initViews();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                // 获取图片
+                mTempBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.want);
+                mFinalBitmap = BlurBitmap.blur(BlurActivity.this, mTempBitmap);
+                BlurActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        // 填充模糊后的图像和原图
+                        mBluredImage.setImageBitmap(mFinalBitmap);
+                        mOriginImg.setImageBitmap(mTempBitmap);
+                        mOriginImg.setAlpha((int) (255 - 0 * 2.55));
+                        // 处理seekbar滑动事件
+                        setSeekBar();
+                    }
+                });
 
-        // 获取图片
-        mTempBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.want);
 
-        mFinalBitmap = BlurBitmap.blur(this, mTempBitmap);
+            }
+        }).start();
 
-        // 填充模糊后的图像和原图
-        mBluredImage.setImageBitmap(mFinalBitmap);
-        mOriginImg.setImageBitmap(mTempBitmap);
-        mOriginImg.setAlpha((int) (255 - 100 * 2.55));
-        // 处理seekbar滑动事件
-        setSeekBar();
     }
 
     /**

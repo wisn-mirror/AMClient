@@ -1,11 +1,11 @@
-package com.wisn.pmlib.activity.testjson;
+package com.wisn.pmlib.activity.test;
 
 import android.os.Bundle;
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
 import com.wisn.pmlib.activity.base.BaseActivity;
-import com.wisn.pmlib.activity.testjson.bean.ProductList;
+import com.wisn.pmlib.activity.test.bean.ProductList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -19,7 +19,7 @@ import java.lang.reflect.Type;
  * Created by wisn on 2016/12/14.
  */
 
-public class TestJson extends BaseActivity{
+public class TestJsonActivity extends BaseActivity{
     private JSONObject newJSONObject(String json) {
         try {
             return new JSONObject(json);

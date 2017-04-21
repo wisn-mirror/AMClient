@@ -1,4 +1,4 @@
-package com.wisn.pmlib.activity.testjson.bean;
+package com.wisn.pmlib.activity.test.bean;
 
 
 /**
