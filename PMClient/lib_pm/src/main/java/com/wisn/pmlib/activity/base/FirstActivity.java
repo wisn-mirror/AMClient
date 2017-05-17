@@ -16,6 +16,7 @@ import com.wisn.pmlib.activity.pm.MainActivity;
 import com.wisn.pmlib.activity.ssl.HttpUrlConnectionSSLActivity;
 import com.wisn.pmlib.activity.ssl.SSLActivity;
 import com.wisn.pmlib.activity.test.TestWso2RestActivity;
+import com.wisn.pmlib.activity.test.TextViewActivity;
 import com.wisn.pmlib.activity.tips.SnackbarActivity;
 import com.wisn.pmlib.activity.unzip.UnZipActivity;
 import com.wisn.pmlib.receiver.AlarmRecever;
@@ -40,7 +41,8 @@ public class FirstActivity extends BaseActivity{
 //        startActivity(new Intent(this, BlurActivity.class));
 //        startActivity(new Intent(this, SnackbarActivity.class));
 //        startActivity(new Intent(this, TestWso2RestActivity.class));
-        startActivity(new Intent(this, HttpUrlConnectionSSLActivity.class));
+//        startActivity(new Intent(this, HttpUrlConnectionSSLActivity.class));
+        startActivity(new Intent(this, TextViewActivity.class));
         this.finish();
         final TextView tv= (TextView) findViewById(R.id.first);
         tv.setOnClickListener(new View.OnClickListener() {

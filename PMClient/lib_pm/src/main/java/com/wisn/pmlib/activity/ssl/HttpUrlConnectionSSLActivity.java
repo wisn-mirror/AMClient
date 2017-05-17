@@ -25,10 +25,11 @@ public class HttpUrlConnectionSSLActivity extends BaseActivity {
             @Override
             public void run() {
                 int i=0;
-                while(i<100){
-                    displayBriefMemory();
+               /* while(i<100){
+                   // displayBriefMemory();
+                    getAppSatus(HttpUrlConnectionSSLActivity.this,"com.wisn.pm");
                     i++;
-                }
+                }*/
                /* getAppSatus(HttpUrlConnectionSSLActivity.this,"com.wisn.pm");
                  String mhttpUrl = "https://10.0.34.252:9443/analytics/table_exists?table=TEST";
                 // String mhttpUrl = "http://10.0.34.252:9763/analytics/table_exists?table=TEST";

@@ -80,6 +80,7 @@
         <activity android:name=".activity.tips.SnackbarActivity"/>
         <activity android:name=".activity.test.TestWso2RestActivity"/>
         <activity android:name=".activity.ssl.HttpUrlConnectionSSLActivity"/>
+        <activity android:name=".activity.test.TextViewActivity"/>
         <!--  桌面
         <activity android:name=".activity.LauncherActivity"
             android:label="@string/launcher">

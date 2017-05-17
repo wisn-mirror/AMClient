@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 
 import com.wisn.pmlib.R;
+import com.wisn.pmlib.application.MApplication;
 import com.wisn.pmlib.log.log;
 
 
@@ -16,6 +17,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
         log.d(TAG, "onCreate");
+        MApplication.getInstance().addActivity(this);
+
     }
 
     @Override
@@ -45,5 +48,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         log.d(TAG,"onDestroy");
+        MApplication.getInstance().finishActivity(this);
+
     }
 }

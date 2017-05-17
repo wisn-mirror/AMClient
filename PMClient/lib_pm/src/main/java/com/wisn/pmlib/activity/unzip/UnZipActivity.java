@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.wisn.pmlib.R;
 import com.wisn.pmlib.activity.base.BaseActivity;
-import com.wisn.pmlib.utils.UnzipFromAssets;
+import com.wisn.pmlib.utils.ZipUtils;
 
 import java.io.File;
 
@@ -43,16 +43,16 @@ public class UnZipActivity extends BaseActivity {
      */
     public String unZip(){
        try{
-           UnzipFromAssets unzipFromAssets = new UnzipFromAssets();
+           ZipUtils unzipFromAssets = new ZipUtils();
            String outputPath = Environment.getExternalStorageDirectory().getAbsolutePath();
            File folder = new File(outputPath + File.separator + "apk_my");
            if (!folder.exists()) {
                folder.mkdirs();
            }
-           unzipFromAssets.unZipFile(UnZipActivity.this,
-                                     "package.zip",
-                                     folder.getAbsolutePath(),
-                                     new UnzipFromAssets.UnZipListener() {
+           unzipFromAssets.unZipFileFromAssets(UnZipActivity.this,
+                                               "package.zip",
+                                               folder.getAbsolutePath(),
+                                               new ZipUtils.UnZipListener() {
 
                                      @Override
                                      public void unZipProgress(int count, int sum) {
