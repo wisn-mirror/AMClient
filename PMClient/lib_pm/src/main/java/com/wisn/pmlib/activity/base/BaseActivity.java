@@ -1,7 +1,10 @@
 package com.wisn.pmlib.activity.base;
 
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MotionEvent;
 
 import com.wisn.pmlib.R;
@@ -18,7 +21,20 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_base);
         log.d(TAG, "onCreate");
         MApplication.getInstance().addActivity(this);
+        getMetaData();
+    }
 
+    private void getMetaData() {
+        ApplicationInfo appInfo = null;
+        try {
+            appInfo = this.getPackageManager()
+                              .getApplicationInfo(getPackageName(),
+                                                  PackageManager.GET_META_DATA);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        String msg=appInfo.metaData.getString("CName");
+        Log.d(TAG, " CName == " + msg );
     }
 
     @Override
