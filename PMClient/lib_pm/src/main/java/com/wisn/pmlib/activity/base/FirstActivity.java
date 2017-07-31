@@ -1,27 +1,14 @@
 package com.wisn.pmlib.activity.base;
 
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.wisn.pmlib.R;
-import com.wisn.pmlib.activity.alarm.AlarmActivity;
-import com.wisn.pmlib.activity.intent.TestIntentActivity;
-import com.wisn.pmlib.activity.other.BlurActivity;
-import com.wisn.pmlib.activity.pm.MainActivity;
-import com.wisn.pmlib.activity.ssl.HttpUrlConnectionSSLActivity;
-import com.wisn.pmlib.activity.ssl.SSLActivity;
-import com.wisn.pmlib.activity.test.TestWso2RestActivity;
-import com.wisn.pmlib.activity.test.TextViewActivity;
-import com.wisn.pmlib.activity.tips.SnackbarActivity;
-import com.wisn.pmlib.activity.unzip.UnZipActivity;
-import com.wisn.pmlib.receiver.AlarmRecever;
+import com.wisn.pmlib.activity.index.IndexActivity;
 import com.wisn.pmlib.utils.MToast;
 import com.wisn.pmlib.utils.NetUtils;
 
@@ -50,8 +37,10 @@ public class FirstActivity extends BaseActivity{
 //        startActivity(new Intent(this, SnackbarActivity.class));
 //        startActivity(new Intent(this, TestWso2RestActivity.class));
 //        startActivity(new Intent(this, HttpUrlConnectionSSLActivity.class));
+        startActivity(new Intent(this, IndexActivity.class));
        /* startActivity(new Intent(this, TextViewActivity.class));
         this.finish();*/
+
         MToast.showSimple(this,"hello");
         mTv = (TextView) findViewById(R.id.first);
         mUrl = (EditText) findViewById(R.id.url);

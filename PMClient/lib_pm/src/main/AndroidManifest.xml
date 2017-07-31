@@ -81,6 +81,7 @@
         <activity android:name=".activity.test.TestWso2RestActivity"/>
         <activity android:name=".activity.ssl.HttpUrlConnectionSSLActivity"/>
         <activity android:name=".activity.test.TextViewActivity"/>
+        <activity android:name=".activity.index.IndexActivity"/>
         <!--  桌面
         <activity android:name=".activity.LauncherActivity"
             android:label="@string/launcher">
