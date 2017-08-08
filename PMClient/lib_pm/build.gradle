@@ -46,4 +46,9 @@ dependencies {
     compile 'log4j:log4j:1.2.17'
     compile 'de.mindpipe.android:android-logging-log4j:1.0.3'
     compile 'com.android.databinding:library:1.2.1'
+
+    compile 'com.android.support:appcompat-v7:24.2.0'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+
 }
