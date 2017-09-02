@@ -15,6 +15,7 @@ import com.wisn.pmlib.activity.pm.MainActivity;
 import com.wisn.pmlib.activity.retrofit.RetrofitActivity;
 import com.wisn.pmlib.activity.ssl.HttpUrlConnectionSSLActivity;
 import com.wisn.pmlib.activity.ssl.SSLActivity;
+import com.wisn.pmlib.activity.svg.SvgActivity;
 import com.wisn.pmlib.activity.test.TestWso2RestActivity;
 import com.wisn.pmlib.activity.test.TextViewActivity;
 import com.wisn.pmlib.activity.tips.SnackbarActivity;
@@ -49,11 +50,11 @@ public class FirstActivity extends BaseActivity{
 //        startActivity(new Intent(this, SnackbarActivity.class));
 //        startActivity(new Intent(this, TestWso2RestActivity.class));
 //        startActivity(new Intent(this, HttpUrlConnectionSSLActivity.class));
-        startActivity(new Intent(this, IndexActivity.class));
+        startActivity(new Intent(this, SvgActivity.class));
        /* startActivity(new Intent(this, TextViewActivity.class));
         this.finish();*/
 
-       startActivity(new Intent(this,RetrofitActivity.class));
+//       startActivity(new Intent(this,RetrofitActivity.class));
         MToast.showSimple(this,"hello");
         mTv = (TextView) findViewById(R.id.first);
         mUrl = (EditText) findViewById(R.id.url);
