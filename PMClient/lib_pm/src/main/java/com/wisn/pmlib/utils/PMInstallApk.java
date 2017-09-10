@@ -157,7 +157,7 @@ public class PMInstallApk {
         }else{
             LogUtils.i(TAG,apkFileInformationName+"备份文件创建失败");
         }
-        FileUtils.CopySdcardFile(apkPath, backupDir.getAbsolutePath() + File.separator + "update.apk");
+        FileUtilsOld.CopySdcardFile(apkPath, backupDir.getAbsolutePath() + File.separator + "update.apk");
     }
 
     /**

@@ -9,7 +9,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.wisn.pmlib.utils.ApkOperate;
-import com.wisn.pmlib.utils.FileUtils;
+import com.wisn.pmlib.utils.FileUtilsOld;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -134,7 +134,7 @@ public class InstallApkService  extends Service {
             backupDir.mkdir();
             log("备份文件创建成功"+ backupDir.getAbsolutePath());
         }
-        FileUtils.CopySdcardFile(apkPath, backupDir.getAbsolutePath() + File.separator + filename);
+        FileUtilsOld.CopySdcardFile(apkPath, backupDir.getAbsolutePath() + File.separator + filename);
     }
     /**
      * 安装正确的版本

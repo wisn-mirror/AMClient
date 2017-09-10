@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.wisn.pmlib.R;
 import com.wisn.pmlib.activity.alarm.AlarmActivity;
+import com.wisn.pmlib.activity.filetest.FileTestActivity;
 import com.wisn.pmlib.activity.intent.TestIntentActivity;
 import com.wisn.pmlib.activity.other.BlurActivity;
 import com.wisn.pmlib.activity.pm.MainActivity;
@@ -50,7 +51,7 @@ public class FirstActivity extends BaseActivity{
 //        startActivity(new Intent(this, SnackbarActivity.class));
 //        startActivity(new Intent(this, TestWso2RestActivity.class));
 //        startActivity(new Intent(this, HttpUrlConnectionSSLActivity.class));
-        startActivity(new Intent(this, SvgActivity.class));
+        startActivity(new Intent(this, FileTestActivity.class));
        /* startActivity(new Intent(this, TextViewActivity.class));
         this.finish();*/
 

@@ -159,7 +159,8 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".activity.svg.SvgActivity"></activity>
+        <activity android:name=".activity.svg.SvgActivity" />
+        <activity android:name=".activity.filetest.FileTestActivity"></activity>
     </application>
 
 </manifest>
