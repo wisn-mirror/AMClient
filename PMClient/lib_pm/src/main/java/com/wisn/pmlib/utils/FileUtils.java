@@ -1,8 +1,9 @@
 package com.wisn.pmlib.utils;
 
 import android.content.Context;
-import android.util.Log;
 
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -78,6 +79,7 @@ public class FileUtils {
 
     /**
      * 拷贝Assets文件夹到指定文件夹
+     *
      * @param context
      * @param assetsDir
      * @param toDirPath
@@ -226,6 +228,7 @@ public class FileUtils {
         }
     }
 
+
     /**
      * 拷贝流
      *
@@ -262,5 +265,89 @@ public class FileUtils {
         return true;
     }
 
+    /**
+     * @param file
+     * @param contents
+     * @param isAppend
+     *
+     * @throws IOException
+     */
+    public static void writeByteToFile(File file, byte[] contents, boolean isAppend) throws IOException {
+        if (!file.exists()) {
+            file.createNewFile();
+        }
+        if (!file.isFile()) {
+            throw new IOException("File to be written not exist, file path : " + file.getAbsolutePath());
+        }
+        FileOutputStream fileOut = null;
+        try {
+            fileOut = new FileOutputStream(file, isAppend);
+            BufferedOutputStream bOutput = new BufferedOutputStream(fileOut);
+            bOutput.write(contents);
+            bOutput.flush();
+        } finally {
+            if (fileOut != null) {
+                try {
+                    fileOut.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    /**
+     * @param file
+     * @param content
+     * @param isAppend
+     *
+     * @throws IOException
+     */
+    public static void writeStringAsFileContent(File file, String content, boolean isAppend) throws
+                                                                                             IOException {
+        writeByteToFile(file, content.getBytes(), isAppend);
+    }
+
+    /**
+     * @param file
+     *
+     * @return
+     *
+     * @throws IOException
+     */
+    public static String readFileContentAsString(File file) throws IOException {
+        byte[] content = readFileContent(file);
+        return new String(content);
+    }
+
+    /**
+     * @param file
+     *
+     * @return
+     *
+     * @throws IOException
+     */
+    public static byte[] readFileContent(File file) throws IOException {
+        if (!file.exists() || !file.isFile()) {
+            throw new IOException("File to be readed not exist, file path : " + file.getAbsolutePath());
+        }
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        FileInputStream in = new FileInputStream(file);
+        byte[] contents = null;
+        try {
+            copyFileStream(in, out);
+            contents = out.toByteArray();
+        } finally {
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+        return contents;
+    }
 
 }

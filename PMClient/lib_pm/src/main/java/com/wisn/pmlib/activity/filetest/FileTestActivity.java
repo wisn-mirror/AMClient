@@ -3,6 +3,7 @@ package com.wisn.pmlib.activity.filetest;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -10,6 +11,7 @@ import com.wisn.pmlib.R;
 import com.wisn.pmlib.utils.FileUtils;
 
 import java.io.File;
+import java.io.IOException;
 
 public class FileTestActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -35,6 +37,24 @@ public class FileTestActivity extends AppCompatActivity implements View.OnClickL
             new Thread(new Runnable() {
                 @Override
                 public void run() {
+                    try {
+                        FileUtils.writeStringAsFileContent(new File(Environment.getExternalStorageDirectory() +
+                                                  File.separator +
+                                                  "content1.txt" ),
+                                                  "client.truststore fdsahfdsafdsa",true);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    /* try {
+                        FileUtils.writeByteToFile(new File(Environment.getExternalStorageDirectory() +
+                                                  File.separator +
+                                                  "content.txt" ),
+                                                  "client.truststore fdsahfdsafdsa".getBytes());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+
                     FileUtils.copyAssetsFileToFile(FileTestActivity.this, "client.truststore",
                                               Environment.getExternalStorageDirectory() +
                                               File.separator +
@@ -43,18 +63,31 @@ public class FileTestActivity extends AppCompatActivity implements View.OnClickL
                     FileUtils.copyAssetsDirToDir(FileTestActivity.this, "ddd",
                                                    Environment.getExternalStorageDirectory() +
                                                    File.separator +
-                                                   "dd");
+                                                   "dd");*/
                 }
             }).start();
         } else if (v == button2) {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    FileUtils.copyDir(Environment.getExternalStorageDirectory() +
+                    try {
+                       /*byte[] content= FileUtils.readFileContent(new File(Environment.getExternalStorageDirectory() +
+                                                           File.separator +
+                                                           "content.txt" ));
+                        Log.e("content:",new String(content));
+                                                           */
+                       String  content= FileUtils.readFileContentAsString(new File(Environment.getExternalStorageDirectory() +
+                                                           File.separator +
+                                                           "content1.txt" ));
+                        Log.e("content:",content);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                 /*   FileUtils.copyDir(Environment.getExternalStorageDirectory() +
                                       File.separator +"filetest",
                                               Environment.getExternalStorageDirectory() +
                                               File.separator +
-                                              "filetest2");
+                                              "filetest2");*/
                 }
             }).start();
         } else if (v == button3) {
