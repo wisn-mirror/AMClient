@@ -1,6 +1,7 @@
 package com.wisn.pmlib.utils;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -154,11 +155,11 @@ public class ZipUtils {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                if (isZip) {
-                    LogUtils.d(TAG, "已经解压过了");
-                    return;
-                }
-                isZip = true;
+//                if (isZip) {
+//                    LogUtils.d(TAG, "已经解压过了");
+//                    return;
+//                }
+//                isZip = true;
                 long startTime = System.currentTimeMillis();
                 ZipInputStream zipInputStream = null;
                 try {
@@ -193,21 +194,32 @@ public class ZipUtils {
                             //如果是文件
                             file = new File(outputDirectory + File.separator
                                             + zipEntry.getName());
-                            //创建该文件
-                            file.createNewFile();
-                            FileOutputStream fileOutputStream = new FileOutputStream(file);
-                            while ((count = zipInputStream.read(buffer)) != -1) {
-                                fileOutputStream.write(buffer, 0, count);
-                                if (count > 0) {
-                                    counttemp = counttemp + count;
-                                    if (counttemp % 64 == 0) {
-                                        if (unZipListener != null) {
-                                            unZipListener.unZipProgress(counttemp, sum);
+                            Log.e(TAG,"file:"+outputDirectory + File.separator
+                                      + zipEntry.getName());
+                            FileOutputStream fileOutputStream=null;
+                            try {
+                                //创建该文件
+                                file.createNewFile();
+                                file.setWritable(Boolean.TRUE);
+                                fileOutputStream= new FileOutputStream(file);
+                                while ((count = zipInputStream.read(buffer)) != -1) {
+                                    fileOutputStream.write(buffer, 0, count);
+                                    if (count > 0) {
+                                        counttemp = counttemp + count;
+                                        if (counttemp % 64 == 0) {
+                                            if (unZipListener != null) {
+                                                unZipListener.unZipProgress(counttemp, sum);
+                                            }
                                         }
                                     }
                                 }
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }finally {
+                                if(fileOutputStream!=null)
+                                fileOutputStream.close();
                             }
-                            fileOutputStream.close();
+
                         }
                         if (unZipListener != null) {
                             unZipListener.unZipProgress(counttemp, sum);

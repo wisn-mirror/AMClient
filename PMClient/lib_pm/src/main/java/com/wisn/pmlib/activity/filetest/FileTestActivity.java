@@ -9,6 +9,8 @@ import android.widget.Button;
 
 import com.wisn.pmlib.R;
 import com.wisn.pmlib.utils.FileUtils;
+import com.wisn.pmlib.utils.ZipUtil;
+import com.wisn.pmlib.utils.ZipUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -34,15 +36,44 @@ public class FileTestActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         if (v == button1) {
+
+
             new Thread(new Runnable() {
                 @Override
                 public void run() {
                     try {
-                        FileUtils.writeStringAsFileContent(new File(Environment.getExternalStorageDirectory() +
+                      /*  FileUtils.writeStringAsFileContent(new File(Environment.getExternalStorageDirectory() +
                                                   File.separator +
                                                   "content1.txt" ),
-                                                  "client.truststore fdsahfdsafdsa",true);
-                    } catch (IOException e) {
+                                                  "client.truststore fdsahfdsafdsa",true);*/
+                        /*ZipUtil.upZipFile(new File(Environment.getExternalStorageDirectory() +
+                                                   File.separator +
+                                                   "dd"+File.separator+"them"+
+                                                   File.separator +
+                                                   "them.skin"),Environment.getExternalStorageDirectory() +
+                                                                File.separator +
+                                                                "dd" +
+                                                                File.separator +
+                                                                "the");*/
+                        ZipUtil.zipFiles(new File(Environment.getExternalStorageDirectory() +
+                                                      File.separator +"filetest").list(),new ZipUtil.ZipListener(){
+
+                            @Override
+                            public void zipStart() {
+
+                            }
+
+                            @Override
+                            public void zipProgress(int zipProgress) {
+
+                            }
+
+                            @Override
+                            public void zipFinish() {
+
+                            }
+                        });
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     /* try {
