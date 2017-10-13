@@ -84,12 +84,12 @@ android {
         ///////////////////////////////version/////////////////////////////////////////
         flavor_a{
             dimension 'version'
-            manifestPlaceholders= [ CName_value:properties.getProperty("CNameAAA"), WisnTheme:"@style/AppTheme1","icon":"@mipmap/ic_launcher" ]
+            manifestPlaceholders= [ UMENG_CHANNEL:"flavor_a",CName_value:properties.getProperty("CNameAAA"), WisnTheme:"@style/AppTheme1","icon":"@mipmap/ic_launcher" ]
         }
 
         flavor_b{
             dimension 'version'
-            manifestPlaceholders= [ CName_value:properties.getProperty("CNameBBB"),WisnTheme:"@style/AppTheme2","icon":"@mipmap/want" ]
+            manifestPlaceholders= [  UMENG_CHANNEL:"flavor_b",CName_value:properties.getProperty("CNameBBB"),WisnTheme:"@style/AppTheme2","icon":"@mipmap/want" ]
         }
 
       }

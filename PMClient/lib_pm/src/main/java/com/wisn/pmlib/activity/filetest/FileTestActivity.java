@@ -37,12 +37,12 @@ public class FileTestActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         if (v == button1) {
 
-
+/*
             new Thread(new Runnable() {
                 @Override
                 public void run() {
                     try {
-                      /*  FileUtils.writeStringAsFileContent(new File(Environment.getExternalStorageDirectory() +
+                       FileUtils.writeStringAsFileContent(new File(Environment.getExternalStorageDirectory() +
                                                   File.separator +
                                                   "content1.txt" ),
                                                   "client.truststore fdsahfdsafdsa",true);*/
@@ -55,7 +55,7 @@ public class FileTestActivity extends AppCompatActivity implements View.OnClickL
                                                                 "dd" +
                                                                 File.separator +
                                                                 "the");*/
-                        ZipUtil.zipFiles(new File(Environment.getExternalStorageDirectory() +
+                       /* ZipUtil.zipFiles(new File(Environment.getExternalStorageDirectory() +
                                                       File.separator +"filetest").list(),new ZipUtil.ZipListener(){
 
                             @Override
@@ -75,7 +75,7 @@ public class FileTestActivity extends AppCompatActivity implements View.OnClickL
                         });
                     } catch (Exception e) {
                         e.printStackTrace();
-                    }
+                    }*/
                     /* try {
                         FileUtils.writeByteToFile(new File(Environment.getExternalStorageDirectory() +
                                                   File.separator +
@@ -94,9 +94,9 @@ public class FileTestActivity extends AppCompatActivity implements View.OnClickL
                     FileUtils.copyAssetsDirToDir(FileTestActivity.this, "ddd",
                                                    Environment.getExternalStorageDirectory() +
                                                    File.separator +
-                                                   "dd");*/
+                                                   "dd");
                 }
-            }).start();
+            }).start();*/
         } else if (v == button2) {
             new Thread(new Runnable() {
                 @Override

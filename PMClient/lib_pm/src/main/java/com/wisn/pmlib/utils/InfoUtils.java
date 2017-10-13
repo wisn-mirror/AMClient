@@ -20,4 +20,5 @@ public class InfoUtils {
             return 0;
         }
     }
+
 }

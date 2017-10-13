@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.wisn.pm">
+<manifest package="com.wisn.pm"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:icon="${icon}"
-        android:theme="${WisnTheme}"
-        >
+        android:theme="${WisnTheme}">
         <!--android:theme="${WisnTheme}"-->
         <meta-data
             android:name="CName"
             android:value="${CName_value}"
-            tools:replace="android:value"/>
+            tools:replace="android:value" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="${UMENG_CHANNEL}"
+            tools:replace="android:value" />
+
 
     </application>
 </manifest>

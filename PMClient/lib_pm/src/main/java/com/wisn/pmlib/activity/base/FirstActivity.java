@@ -1,8 +1,11 @@
 package com.wisn.pmlib.activity.base;
 
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -39,6 +42,17 @@ public class FirstActivity extends BaseActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
+        try{
+            ApplicationInfo appInfo  = this.getPackageManager()
+                                             .getApplicationInfo(this.getPackageName(),
+                                                                 PackageManager.GET_META_DATA);
+            String UMENG_CHANNEL=appInfo.metaData.getString("UMENG_CHANNEL");
+            Log.e("FirstActivity",UMENG_CHANNEL);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
 //        startActivity(new Intent(FirstActivity.this,com.wisn.pmlib.activity.downloads.DownloadActivity.class));
 //        startActivity(new Intent(FirstActivity.this,TestJsonActivity.class));
        // startActivity(new Intent(FirstActivity.this,DownloadActivity.class));
