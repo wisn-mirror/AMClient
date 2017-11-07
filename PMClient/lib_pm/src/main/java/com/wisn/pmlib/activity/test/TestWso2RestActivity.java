@@ -66,6 +66,8 @@ public class TestWso2RestActivity extends BaseActivity {
 
     /**
      * 获取cpu状态
+     *
+     *
      * @return
      */
     private String getProcessCpuRate() {
@@ -75,8 +77,7 @@ public class TestWso2RestActivity extends BaseActivity {
         try {
             String Result;
             Process p;
-            p = Runtime.getRuntime().exec("top -n 1 -m 1  -s cpu");
-
+            p = Runtime.getRuntime().exec("top -n 1 -m 1 -s cpu");
             BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
             while ((Result = br.readLine()) != null) {
                 if (Result.trim().length() < 1) {
@@ -88,14 +89,11 @@ public class TestWso2RestActivity extends BaseActivity {
                     String[] SYSusage = CPUusr[1].split("System");
                     tv.append("CPU:" + CPUusage[1].trim() + " length:" + CPUusage[1].trim().length() + "\n");
                     tv.append("SYS:" + SYSusage[1].trim() + " length:" + SYSusage[1].trim().length() + "\n");
-
                     rate = Integer.parseInt(CPUusage[1].trim()) + Integer.parseInt(SYSusage[1].trim());
                     break;
                 }
             }
-
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         System.out.println(rate + "");
